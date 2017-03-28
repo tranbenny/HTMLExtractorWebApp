@@ -1,0 +1,36 @@
+<html>
+<head>
+
+	<title>HTML Extractor</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./style/main.css">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="col-md-4 col-lg-4">
+			<h1>HTMLExtract</h1> 
+			<p class="lead">Enter a url and generate a file based on its contents</p>
+			<form>
+				<div class="form-group">
+					<label for="urlInput">Enter URL</label>
+					<input type="url" class="form-control" id="urlInput" placeholder="Enter url here">
+				</div>
+				<div class="form-group">
+					<label for="fileInput">Enter Output Filename</label>
+					<input type="text" class="form-control" id="fileName" placeholder="Enter filename here">
+				</div>
+				<button class="btn btn-primary">Extract</button>
+				<button class="btn">Demo</button>
+			</form>
+
+		</div>
+		<div class="col-md-7 col-lg-7 col-md-offset-1 col-lg-offset-1">
+			<div class="row">
+				<h3>Form</h3>
+				<p id="fileStatus">Generating...</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
