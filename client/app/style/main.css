@@ -1,0 +1,10 @@
+.resultContainer {
+	margin-left: 5%;
+}
+
+.resultBox {
+	height: 100%;
+	width: 100%;
+	border: 1px solid silver;
+	border-radius: 5px;
+}

@@ -1,5 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+$(document).ready(function() {
 
-console.log("app.js loaded");
-console.log('hello world');
+	// fire get request with input url and output file name
+	function formSubmit(event) {
+		event.preventDefault();
+
+
+	}
+
+	function getDemo(event) {
+		console.log('button clicked');
+		event.preventDefault();
+		var url = "https://www.pitchbook.com";
+		var fileName = "output.txt";
+		$.get('/api', {
+			'url' : url,
+			'fileName' : 'fileName'
+		}, function(response) {
+			console.log(response);
+		});
+	}
+
+	$('#demo-btn').click(getDemo);
+
+
+
+});

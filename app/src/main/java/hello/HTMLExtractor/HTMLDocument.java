@@ -1,21 +1,15 @@
 package hello.HTMLExtractor;
 
 
-import hello.HTMLExtractor.LinkValidator;
-import hello.HTMLExtractor.SequenceValidator;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Attribute;
-import org.jsoup.nodes.Attributes;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
+import org.jsoup.nodes.*;
 import org.jsoup.select.Elements;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+
 
 import static hello.HTMLExtractor.helpers.GetHTMLService.getFromFile;
 import static hello.HTMLExtractor.helpers.GetHTMLService.getFromURL;
@@ -117,7 +111,7 @@ public class HTMLDocument implements HTMLDocumentInterface {
 
     /**
      *
-      * @param text
+     * @param text
      * @return
      */
     private String formatOutput(String text) {
@@ -137,13 +131,15 @@ public class HTMLDocument implements HTMLDocumentInterface {
             for (int i = 0; i < comments.length; i++) {
                 // find any tags inside comment
                 String[] newTags = StringUtils.substringsBetween(comments[i], "<", ">");
-                String newCommentTag = "";
-                for (int j = 0; j < newTags.length; j++) {
-                    if (newTags[j].length() > 2 && Character.isLetter(newTags[j].charAt(1))) {
-                        newCommentTag += "<" + newTags[j] + ">";
+                if (newTags != null) {
+                    String newCommentTag = "";
+                    for (int j = 0; j < newTags.length; j++) {
+                        if (newTags[j].length() > 2 && Character.isLetter(newTags[j].charAt(1))) {
+                            newCommentTag += "<" + newTags[j] + ">";
+                        }
                     }
+                    result = result.replace("<!--" + comments[i] + "-->", newCommentTag);
                 }
-                result = result.replace("<!--" + comments[i] + "-->", newCommentTag);
             }
         }
 
@@ -266,6 +262,4 @@ public class HTMLDocument implements HTMLDocumentInterface {
         }
         return true;
     }
-
-
 }
